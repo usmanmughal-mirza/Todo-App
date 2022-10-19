@@ -26,7 +26,7 @@ console.log("connected to mongodb");
 })
 // API  
 app.get("/",(req,res) =>{
-    res.send("welcome to nodejs")
+    res.send("welcome to node.js")
 })
 app.use("/api/",TodoRouter);
 
