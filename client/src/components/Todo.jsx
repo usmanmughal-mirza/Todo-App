@@ -1,16 +1,35 @@
-import React from 'react'
+import React from 'react';
+import { useContext } from 'react';
+import {TodoContext} from "../context/Todocontext";
+import {FiEdit} from "react-icons/fi";
+// import {TodoContext} from "../context/Todocontext";
 
-const Todo = () => {
+const Todo = ({todo}) => {
+  const {setIsOpen,todoitem,setTodoItem}=useContext(TodoContext);
+  
+
+   function openModal() {
+    setIsOpen(true);
+    setTodoItem(todo);
+    console.log(todo);
+  }
+
+  
+  
   return (
-    <div className='todo'>
-        <li className="todo-item">hello</li>
-        <button className="complete-btn">
-          complete
+    <>
+    
+    
+    <div className='todo' key={todo._id}>
+        <li className={todo.completed ? "todo-item completed":"todo-item"}>{todo.todo} </li>
+        <button className={todo.completed ?`complete-btn`:"complete-btn pending"}  disabled >
+          {todo.completed ? "completed":"pending"}
         </button>
-        <button className="trash-btn">
-          trash
+        <button className="trash-btn" onClick={openModal}>
+          <FiEdit className='trash-btn-icon' />
         </button>
      </div>
+     </>
   )
 }
 

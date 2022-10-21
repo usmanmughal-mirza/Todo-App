@@ -7,10 +7,13 @@
 body {
     background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
     color: white;
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", sans-serif; */
     min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
 }
-
+input{
+    outline: none;
+}
 header {
     font-size: 2rem;
 }
@@ -22,7 +25,12 @@ form {
     justify-content: center;
     align-items: center;
 }
-
+.main-para {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 0.4px;
+}
 form input,
 form button {
     padding: 0.5rem;
@@ -54,9 +62,11 @@ form button:hover {
     list-style: none;
 }
 
+/* TODO -- Todo.jsx */
 .todo {
     margin: 0.5rem;
     background: white;
+    width: 30rem;
     font-size: 1.5rem;
     color: black;
     display: flex;
@@ -78,15 +88,23 @@ form button:hover {
     background: #ff6f47;
     color: white;
     border: none;
-    padding: 1rem;
+    /* padding: 1rem; */
     cursor: pointer;
     font-size: 1rem;
 }
-
 .complete-btn {
-    background: rgb(11, 212, 162);
+    padding: 0;
+    width: 6rem;
+    height: 3rem;
+    letter-spacing: 0.8px;
+    font-size: 1rem;
+    background-color: #42b883 !important;
+    /* font-weight: bold; */
 }
 
+.pending {
+    background-color: #eb2632 !important; 
+}
 .todo-item {
     padding: 0rem 0.5rem;
 }
@@ -95,7 +113,29 @@ form button:hover {
 .fa-check {
     pointer-events: none;
 }
-
+.trash-btn {
+    background: #ff6f47;
+        color: white;
+        border: none;
+        /* padding: 1rem; */
+        height: 2rem;
+        width: 2rem;
+        border-radius: 5px;
+        margin-left: 1rem;
+        margin: 0 1rem;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: 0.2s all ease;
+}
+.trash-btn:hover {
+    background: #ff6f47;
+        color: white;
+        height: 2.5rem;
+            width: 2.5rem;
+}
+.trash-btn-icon {
+    font-size: 1.2em;
+}
 .fall {
     transform: translateY(10rem) rotateZ(20deg);
     opacity: 0;
@@ -150,3 +190,162 @@ select {
   transform: scale(1.5);
 }
 */
+
+/* MODAL ---------------------------------------------------------- */
+/* ----------------------------------------------
+--------------------------------------- */
+.todo-modal {
+    position: relative;
+}
+.todo-modal-form {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    /* background-color: lawngreen; */
+}
+.todo-modal-form-input {
+    margin: 2rem 0;
+    background-color: rgba(128, 128, 128, 0.307);
+    height: 3rem;
+    width: 100%;
+    border: 12px soid #ff6f47 !important;
+    border-radius: 5px;
+}
+.todo-modal-form-input input {
+    color: black !important;
+    outline: none;
+    font-size: 1.2rem;
+    letter-spacing: 0.3px;
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-closebtn {
+    border: none;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    cursor: pointer;
+}
+.modal-closebtn-icon {
+    background-color: transparent !important;
+    font-size: 1.5rem;
+}
+.todo-modal-form-btncontainer {
+    display: flex;
+}
+.todo-modal-btn {
+    color: white;
+    background: #ff6f47ef;
+    width: 7.5rem;
+    height: 2.5rem;
+    font-size: 1.05rem;
+    margin: 0 1rem;
+    letter-spacing: 0.5px;
+    border-radius: 5px;
+    transition: 1s all ease;
+}
+.todo-modal-btn:hover {
+    background: #ff6f47;
+}
+
+/* MEDIA QUERIES --------------------- */
+@media(max-width:900px) {
+    form {
+        flex-direction: column;
+    }
+    .todo {
+        font-size: 1.3rem;
+    }
+    .main-para {
+        padding: 1rem 0;
+    }
+}
+
+@media(max-width:600px) {
+    .todo {
+            font-size: 1.2rem;
+        }
+   .todo-modal-form-btncontainer {
+       flex-direction: column;
+
+   }
+   .todo-modal-form {
+    padding:0 3rem;
+   }
+   .todo-modal-btn {
+    margin: 0.5rem 0;
+    width: 20rem;
+   }
+   header {
+       font-size: 1.6rem;
+   }
+   .todo {
+    max-width: 25rem;
+   }
+ form input,
+ form button {
+     padding: 0.4rem;
+     font-size: 1.8rem;
+ }
+ .main-para {
+    padding: 0;
+ }
+}
+
+@media(max-width:450px) {
+form input,
+    form button {
+        padding: 0.4rem;
+        font-size: 1.6rem;
+    }
+         .todo {
+            width: 20rem;
+            font-size: 1rem;
+            
+         }
+                 .complete-btn {
+                    
+                     width: 5rem;
+                     letter-spacing: 0.5px;
+                     font-size: 0.9rem;
+                 }
+          .todo-modal-form {
+              padding: 0 2rem;
+          }
+    
+          .todo-modal-btn {
+              margin: 0.5rem 0;
+              width: 15rem;
+          }
+}
+
+@media(max-width:375px) {
+    .complete-btn {
+    
+            width: 5rem;
+            letter-spacing: 0.5px;
+            font-size: 0.6rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    .todo {
+         width: 18rem;
+        
+          }
+    form input,
+    form button {
+        padding: 0.4rem;
+        font-size: 1.2rem;
+    }
+          .todo-modal-form {
+              padding: 0 1rem;
+          }
+    
+          .todo-modal-btn {
+              margin: 0.5rem 0;
+              width: 14rem;
+          }
+}

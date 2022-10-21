@@ -5,17 +5,17 @@ const Todo=require("../model/todomodel");
 // GET ALL / COMPLETED / UNCOMPLETED TODOS --------------------------
 
 const getAllTodos =async(req,res) =>{
-const {status}=req.query;
+const {todostate}=req.query;
 let todos=[];
 
 try {
  
-    if(status=== "completed"){
+    if(todostate=== "completed"){
        todos=await Todo.aggregate([
             {$match:{completed:true}}
         ])
 }
-   else if(status==="uncompleted"){
+   else if(todostate==="uncompleted"){
      todos=await Todo.aggregate([
             {$match:{completed:false}}
         ])
